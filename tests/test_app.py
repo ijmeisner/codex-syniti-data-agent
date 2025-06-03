@@ -3,7 +3,6 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from unittest.mock import patch
 from flask.testing import FlaskClient
 from app.main import create_app
