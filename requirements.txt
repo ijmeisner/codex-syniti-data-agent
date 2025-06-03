@@ -1,0 +1,4 @@
+flask
+crewai
+crewai-tools[mcp]
+openai
