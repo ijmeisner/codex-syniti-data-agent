@@ -1,13 +1,14 @@
 import os
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import MCPServerAdapter
-from mcp import StreamableHTTPServerParameters
+
 
 
 def build_crew(query: str) -> Crew:
     """Builds a CrewAI crew with MCP tools for the request."""
     server_url = os.environ.get("MCP_SERVER_URL", "http://localhost:8000/mcp")
-    server_params = StreamableHTTPServerParameters(url=server_url)
+    server_params = {"url": server_url, "transport": "streamable-http"}
+
     with MCPServerAdapter(server_params) as mcp_tools:
         agent = Agent(
             role="SAP data quality and migration expert",
